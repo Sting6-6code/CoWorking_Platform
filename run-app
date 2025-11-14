@@ -1,0 +1,25 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+# 编译（如果需要）
+echo "Compiling..."
+/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin/javac \
+  -d bin \
+  --module-path "/Users/wangsiting/Downloads/javafx-sdk-21.0.5 2/lib" \
+  --add-modules javafx.controls,javafx.fxml \
+  -cp "/Users/wangsiting/Downloads/javafx-sdk-21.0.5 2/lib/*" \
+  src/application/*.java
+
+echo ""
+echo "======================================"
+echo "  Starting CoWorking Platform"
+echo "======================================"
+echo ""
+
+# 运行
+/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin/java \
+  --module-path "/Users/wangsiting/Downloads/javafx-sdk-21.0.5 2/lib" \
+  --add-modules javafx.controls,javafx.fxml \
+  -cp "bin:/Users/wangsiting/Downloads/javafx-sdk-21.0.5 2/lib/*" \
+  application.Main
+
